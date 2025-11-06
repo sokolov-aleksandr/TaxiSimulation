@@ -11,7 +11,9 @@ namespace TaxiSimulation.Core.Services
     public class DriverService
     {
         private readonly List<Driver> _drivers = new List<Driver>();  // Список водителей 
-        private readonly Grid _grid;                                  // Общая сетка
+        private readonly Grid _grid;    // Общая сетка
+        public Grid Grid => _grid;      // Публичная для чтения
+
 
         public DriverService(Grid grid)
         {
