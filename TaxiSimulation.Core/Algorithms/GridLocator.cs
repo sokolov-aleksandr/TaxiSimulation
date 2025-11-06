@@ -8,5 +8,6 @@ namespace TaxiSimulation.Core.Algorithms
 {
     internal class GridLocator
     {
+
     }
 }
