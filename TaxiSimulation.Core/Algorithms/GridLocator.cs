@@ -22,6 +22,7 @@ namespace TaxiSimulation.Core.Algorithms
         {
             _driverService = driverService ?? throw new ArgumentNullException(nameof(driverService));
             _grid = driverService.Grid;
+            BuildIndex();
         }
 
         /// <summary>
@@ -42,8 +43,6 @@ namespace TaxiSimulation.Core.Algorithms
 
             if (count <= 0)
                 return Enumerable.Empty<Driver>();
-
-            BuildIndex(); // обновляем индекс на момент запроса
 
             var foundDrivers = new List<Driver>();
             int radius = 0;
