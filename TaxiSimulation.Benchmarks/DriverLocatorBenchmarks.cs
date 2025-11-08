@@ -10,7 +10,6 @@ namespace TaxiSimulation.Benchmarks
 {
     [MemoryDiagnoser] // показывает потребление памяти
     [RankColumn] // выводит сравнительный рейтинг
-    [RPlotExporter]
     public class DriverLocatorBenchmarks
     {
         private DriverService _driverService;
@@ -20,12 +19,10 @@ namespace TaxiSimulation.Benchmarks
 
         private Position _orderPosition;
 
-        //[Params(100, 10000)]
-        [Params(599_990)]
+        [Params(150, 10000)]
         public int drivers_count;
 
-        //[Params(1000, 10000)]
-        [Params(1000)]
+        [Params(50, 10000)]
         public int grid_size;
 
         [GlobalSetup]
@@ -53,7 +50,7 @@ namespace TaxiSimulation.Benchmarks
             _gridLocator = new GridLocator(_driverService);
             _treeDriverLocator = new TreeDriverLocator(_driverService);
 
-            _orderPosition = new Position(500, 500);
+            _orderPosition = new Position(40, 40);
         }
 
         [Benchmark(Baseline = true)] // Базовый метод
