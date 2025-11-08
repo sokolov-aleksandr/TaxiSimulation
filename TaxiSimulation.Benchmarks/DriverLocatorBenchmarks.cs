@@ -10,18 +10,22 @@ namespace TaxiSimulation.Benchmarks
 {
     [MemoryDiagnoser] // показывает потребление памяти
     [RankColumn] // выводит сравнительный рейтинг
+    [RPlotExporter]
     public class DriverLocatorBenchmarks
     {
         private DriverService _driverService;
         private BruteForceLocator _bruteForceLocator;
         private GridLocator _gridLocator;
+        private TreeDriverLocator _treeDriverLocator;
 
         private Position _orderPosition;
 
-        [Params(100, 10000)]
+        //[Params(100, 10000)]
+        [Params(599_990)]
         public int drivers_count;
 
-        [Params(1000, 10000)]
+        //[Params(1000, 10000)]
+        [Params(1000)]
         public int grid_size;
 
         [GlobalSetup]
@@ -47,11 +51,12 @@ namespace TaxiSimulation.Benchmarks
 
             _bruteForceLocator = new BruteForceLocator(_driverService);
             _gridLocator = new GridLocator(_driverService);
+            _treeDriverLocator = new TreeDriverLocator(_driverService);
 
             _orderPosition = new Position(500, 500);
         }
 
-        [Benchmark(Baseline = true)]
+        [Benchmark(Baseline = true)] // Базовый метод
         public void BruteForce()
         {
             _bruteForceLocator.FindNearestDrivers(_orderPosition, 5).ToList();
@@ -63,6 +68,11 @@ namespace TaxiSimulation.Benchmarks
             _gridLocator.FindNearestDrivers(_orderPosition, 5).ToList();
         }
 
+        [Benchmark]
+        public void TreeBased()
+        {
+            _treeDriverLocator.FindNearestDrivers(_orderPosition, 5).ToList();
+        }
     }
 
     public static class Program
