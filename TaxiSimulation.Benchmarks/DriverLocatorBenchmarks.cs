@@ -19,10 +19,10 @@ namespace TaxiSimulation.Benchmarks
 
         private Position _orderPosition;
 
-        [Params(150, 10000)]
+        [Params(150)]
         public int drivers_count;
 
-        [Params(50, 10000)]
+        [Params(50)]
         public int grid_size;
 
         [GlobalSetup]
