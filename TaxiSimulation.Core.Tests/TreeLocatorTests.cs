@@ -22,9 +22,9 @@ namespace TaxiSimulation.Core.Tests
             var d2 = new Driver(Guid.NewGuid(), new Position(5, 5));
             var d3 = new Driver(Guid.NewGuid(), new Position(2, 2));
 
-            service.AddDriver(d1);
-            service.AddDriver(d2);
-            service.AddDriver(d3);
+            service.AddDriver(d1, out _);
+            service.AddDriver(d2, out _);
+            service.AddDriver(d3, out _);
 
             var locator = new TreeDriverLocator(service);
             var result = locator.FindNearestDrivers(new Position(0, 0), 2).ToList();
@@ -54,8 +54,8 @@ namespace TaxiSimulation.Core.Tests
 
             var d1 = new Driver(Guid.NewGuid(), new Position(1, 1));
             var d2 = new Driver(Guid.NewGuid(), new Position(3, 3));
-            service.AddDriver(d1);
-            service.AddDriver(d2);
+            service.AddDriver(d1, out _);
+            service.AddDriver(d2, out _);
 
             var locator = new TreeDriverLocator(service);
             var result = locator.FindNearestDrivers(new Position(0, 0), 5).ToList();
@@ -75,9 +75,9 @@ namespace TaxiSimulation.Core.Tests
             var d2 = new Driver(Guid.NewGuid(), new Position(0, 1));
             var d3 = new Driver(Guid.NewGuid(), new Position(5, 5));
 
-            service.AddDriver(d1);
-            service.AddDriver(d2);
-            service.AddDriver(d3);
+            service.AddDriver(d1, out _);
+            service.AddDriver(d2, out _);
+            service.AddDriver(d3, out _);
 
             var locator = new TreeDriverLocator(service);
             var result = locator.FindNearestDrivers(new Position(0, 0), 2).ToList();
