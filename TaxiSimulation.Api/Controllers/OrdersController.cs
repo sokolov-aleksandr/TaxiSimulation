@@ -50,22 +50,36 @@ namespace TaxiSimulation.Api.Controllers
             return Ok(resp);
         }
 
-        // Простая реализация поиска маршрута
+        // Поиск маршрута с "симуляцией" перекрёстков
         private static List<Position> BuildStepRoute(Position from, Position to)
         {
             var route = new List<Position>();
             int x = from.X, y = from.Y;
             route.Add(new Position(x, y));
+
+            // Сначала идёт по диагонали
+            while (x != to.X && y != to.Y)
+            {
+                x += Math.Sign(to.X - x);
+                route.Add(new Position(x, y)); // Это при условии, что по диагонали двигаться нельзя (симулируем перекрёстки)
+                y += Math.Sign(to.Y - y);
+                route.Add(new Position(x, y));
+            }
+
+            // Если осталась разница по X — идём по X
             while (x != to.X)
             {
                 x += Math.Sign(to.X - x);
                 route.Add(new Position(x, y));
             }
+
+            // Если осталась разница по Y — идём по Y
             while (y != to.Y)
             {
                 y += Math.Sign(to.Y - y);
                 route.Add(new Position(x, y));
             }
+
             return route;
         }
 
