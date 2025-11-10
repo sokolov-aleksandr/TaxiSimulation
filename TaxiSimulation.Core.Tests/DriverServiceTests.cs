@@ -13,7 +13,7 @@ namespace TaxiSimulation.Core.Tests
         {
             var grid = new Grid(10, 10);
             var service = new DriverService(grid);
-            var driver = new Driver(Guid.NewGuid(), new Position(1, 2));
+            var driver = new Driver(1, new Position(1, 2));
 
             var result = service.AddDriver(driver, out var message);
 
@@ -27,7 +27,7 @@ namespace TaxiSimulation.Core.Tests
         {
             var grid = new Grid(5, 5);
             var service = new DriverService(grid);
-            var driver = new Driver(Guid.NewGuid(), new Position(10, 10));
+            var driver = new Driver(2, new Position(10, 10));
 
             var result = service.AddDriver(driver, out var message);
 
@@ -41,9 +41,9 @@ namespace TaxiSimulation.Core.Tests
             var grid = new Grid(10, 10);
             var service = new DriverService(grid);
             var pos = new Position(1, 1);
-            service.AddDriver(new Driver(Guid.NewGuid(), pos), out _);
+            service.AddDriver(new Driver(3, pos), out _);
 
-            var result = service.AddDriver(new Driver(Guid.NewGuid(), pos), out var message);
+            var result = service.AddDriver(new Driver(4, pos), out var message);
 
             Assert.IsFalse(result);
             Assert.That(message, Is.EqualTo("Здесь уже находится другой водитель"));
@@ -54,7 +54,7 @@ namespace TaxiSimulation.Core.Tests
         {
             var grid = new Grid(10, 10);
             var service = new DriverService(grid);
-            var driver = new Driver(Guid.NewGuid(), new Position(1, 1));
+            var driver = new Driver(5, new Position(1, 1));
             service.AddDriver(driver, out _);
 
             var newPos = new Position(2, 2);
@@ -70,7 +70,7 @@ namespace TaxiSimulation.Core.Tests
         {
             var grid = new Grid(5, 5);
             var service = new DriverService(grid);
-            var driver = new Driver(Guid.NewGuid(), new Position(1, 1));
+            var driver = new Driver(6, new Position(1, 1));
             service.AddDriver(driver, out _);
 
             var result = service.UpdateDriver(driver.Id, new Position(10, 10), out var message);

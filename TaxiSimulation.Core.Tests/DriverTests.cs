@@ -10,7 +10,7 @@ namespace TaxiSimulation.Core.Tests
         [Test]
         public void Constructor_ShouldSetIdAndPosition()
         {
-            var id = Guid.NewGuid();
+            var id = 1;
             var pos = new Position(1, 2);
             var driver = new Driver(id, pos);
 
@@ -21,7 +21,7 @@ namespace TaxiSimulation.Core.Tests
         [Test]
         public void UpdatePosition_ShouldChangePosition()
         {
-            var driver = new Driver(Guid.NewGuid(), new Position(1, 1));
+            var driver = new Driver(2, new Position(1, 1));
             var newPos = new Position(2, 3);
             driver.UpdatePosition(newPos);
 

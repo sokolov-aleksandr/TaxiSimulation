@@ -41,7 +41,7 @@ namespace TaxiSimulation.Benchmarks
 
                 if (usedPositions.Add((x, y))) // Не повторяемся
                 {
-                    _driverService.AddDriver(new Driver(Guid.NewGuid(), new Position(x, y)), out _);
+                    _driverService.AddDriver(new Driver(1, new Position(x, y)), out _);
                     i++;
                 }
             }

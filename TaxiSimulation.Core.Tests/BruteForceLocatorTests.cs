@@ -16,9 +16,9 @@ namespace TaxiSimulation.Core.Tests
             var grid = new Grid(10, 10);
             var service = new DriverService(grid);
 
-            var d1 = new Driver(Guid.NewGuid(), new Position(1, 1));
-            var d2 = new Driver(Guid.NewGuid(), new Position(5, 5));
-            var d3 = new Driver(Guid.NewGuid(), new Position(2, 2));
+            var d1 = new Driver(1, new Position(1, 1));
+            var d2 = new Driver(2, new Position(5, 5));
+            var d3 = new Driver(3, new Position(2, 2));
             service.AddDriver(d1, out _);
             service.AddDriver(d2, out _);
             service.AddDriver(d3, out _);
