@@ -11,7 +11,7 @@ namespace TaxiSimulation.Core.Models
     /// </summary>
     public class Driver
     {
-        public Guid Id { get; }    // Уникальный идентификатор
+        public int Id { get; }    // Уникальный идентификатор
         public Position Position { get; private set; }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace TaxiSimulation.Core.Models
         /// </summary>
         /// <param name="id">Уникальный идентификатор</param>
         /// <param name="position">Его позиция</param>
-        public Driver(Guid id, Position position)
+        public Driver(int id, Position position)
         {
             Id = id;
             Position = position;

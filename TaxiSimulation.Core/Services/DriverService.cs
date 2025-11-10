@@ -35,7 +35,7 @@ namespace TaxiSimulation.Core.Services
             }
         }
 
-        public bool UpdateDriver(Guid id, Position newPos, out string message)
+        public bool UpdateDriver(int id, Position newPos, out string message)
         {
             lock (_lock)
             {
@@ -74,7 +74,7 @@ namespace TaxiSimulation.Core.Services
             }
         }
 
-        public bool TryRemoveDriver(Guid id)
+        public bool TryRemoveDriver(int id)
         {
             lock (_lock)
             {
@@ -93,7 +93,7 @@ namespace TaxiSimulation.Core.Services
             }
         }
 
-        public Driver GetById(Guid id)
+        public Driver GetById(int id)
         {
             lock (_lock)
             {
